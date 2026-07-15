@@ -1,0 +1,14 @@
+Ignora pachetele de frontend
+frontend/node_modules/
+frontend/dist/
+
+# Ignora fisierele compilate de Java/Spring Boot
+backend/target/
+backend/.mvn/
+
+# Ignora fisierele IDE-ului (IntelliJ / VS Code)
+.idea/
+.vscode/
+
+# Ignora parole / variabile de mediu
+.env
