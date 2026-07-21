@@ -15,7 +15,10 @@ CREATE TABLE Client(
     clientID INT AUTO_INCREMENT PRIMARY KEY,
     clientName VARCHAR(255) NOT NULL,
     clientEmail VARCHAR(255) NOT NULL,
-    clientAddress VARCHAR(255) NOT NULL
+    clientAddress VARCHAR(255) NOT NULL,
+    clientPhoneNumber VARCHAR(20) NOT NULL,
+    CONSTRAINT UC_clientEmail UNIQUE(clientEmail),
+    CONSTRAINT UC_clientPhoneNumber UNIQUE(clientPhoneNumber)
 );
 
 CREATE TABLE Orders(
@@ -24,6 +27,7 @@ CREATE TABLE Orders(
     orderDate DATE NOT NULL,
     orderStatus VARCHAR(255) NOT NULL,
     orderDeliveryAddress VARCHAR(255) NOT NULL,
+    clientPhoneNumber VARCHAR(20) NOT NULL,
     CONSTRAINT fk_Orders_Client
         FOREIGN KEY (clientID) REFERENCES Client(clientID)
 );
@@ -34,8 +38,12 @@ CREATE TABLE Bill(
     billIssueDate DATE NOT NULL,
     billSeries VARCHAR(3) NOT NULL,
     billNumber VARCHAR(5) NOT NULL,
+    clientName VARCHAR(255) NOT NULL,
+    clientAddress VARCHAR(255) NOT NULL,
     CONSTRAINT fk_Bill_Order
-        FOREIGN KEY (orderID) REFERENCES Orders(orderID)
+        FOREIGN KEY (orderID) REFERENCES Orders(orderID),
+    CONSTRAINT UC_orderID UNIQUE(orderID),
+    CONSTRAINT UC__billSeriesAndNumber UNIQUE(billSeries, billNumber)
 );
 
 CREATE TABLE OrderDetails(

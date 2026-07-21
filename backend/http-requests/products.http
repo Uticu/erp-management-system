@@ -1,0 +1,5 @@
+###GET ALL PRODUCTS
+GET http://localhost:8080/api/products/get-all-products
+
+###DELETE PRODUCT BY ID
+DELETE http://localhost:8080/api/products/remove-by-id/1

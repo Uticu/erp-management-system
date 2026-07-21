@@ -14,11 +14,14 @@ public class Client {
     @Column(name = "clientName", length = 255, nullable = false, unique = false)
     private String clientName;
 
-    @Column(name = "clientEmail", length = 255, nullable = false, unique = false)
+    @Column(name = "clientEmail", length = 255, nullable = false, unique = true)
     private String clientEmail;
 
     @Column(name = "clientAddress", length = 255, nullable = false, unique = false)
     private String clientAddress;
+
+    @Column(name = "clientPhoneNumber", length = 20, nullable = false, unique = true)
+    private String clientPhoneNumber;
 
     public Client(){
     }
@@ -60,6 +63,14 @@ public class Client {
 
     public void setClientAddress(String clientAddress) {
         this.clientAddress = clientAddress;
+    }
+
+    public String getClientPhoneNumber() {
+        return clientPhoneNumber;
+    }
+
+    public void setClientPhoneNumber(String clientPhoneNumber) {
+        this.clientPhoneNumber = clientPhoneNumber;
     }
 
     @Override
