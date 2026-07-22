@@ -28,4 +28,22 @@ public class GlobalExceptionHandler {
         ApiError apiError = new ApiError(409, ex.getMessage(), LocalDateTime.now());
         return new ResponseEntity<>(apiError, HttpStatus.CONFLICT);
     }
+
+    @ExceptionHandler(NoProductsException.class)
+    public ResponseEntity<Object> noProductsInDataBase(NoProductsException ex){
+        ApiError apiError = new ApiError(404, ex.getMessage(), LocalDateTime.now());
+        return new ResponseEntity<>(apiError, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(ProductNotFoundException.class)
+    public ResponseEntity<Object> productNotFoundInDataBase(ProductNotFoundException ex){
+        ApiError apiError = new ApiError(404, ex.getMessage(), LocalDateTime.now());
+        return new ResponseEntity<>(apiError, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(ProductFoundException.class)
+    public ResponseEntity<Object> productFoundInDataBase(ProductFoundException ex){
+        ApiError apiError = new ApiError(409, ex.getMessage(), LocalDateTime.now());
+        return new ResponseEntity<>(apiError, HttpStatus.CONFLICT);
+    }
 }

@@ -1,8 +1,15 @@
 ###GET ALL CLIENTS
 GET http://localhost:8080/api/client
 
+###GET CLIENT BY ID
+GET http://localhost:8080/api/client/{{id}}
+
 ###DELETE CLIENT BY ID
-DELETE http://localhost:8080/api/client/{id}
+DELETE http://localhost:8080/api/client/{{id}}
 
 ###INSERT CLIENT
 PUT http://localhost:8080/api/client
+
+###MODIFY CLIENT
+POST http://localhost:8080/api/client/{{id}}
+

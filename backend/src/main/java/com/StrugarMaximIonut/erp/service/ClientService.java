@@ -3,6 +3,7 @@ package com.StrugarMaximIonut.erp.service;
 import com.StrugarMaximIonut.erp.dto.ClientDTO;
 import com.StrugarMaximIonut.erp.dto.ClientDTOMapper;
 import com.StrugarMaximIonut.erp.dto.ClientRequestDTO;
+import com.StrugarMaximIonut.erp.dto.ClientRequestMapper;
 import com.StrugarMaximIonut.erp.exception.ClientFoundException;
 import com.StrugarMaximIonut.erp.exception.ClientNotFoundException;
 import com.StrugarMaximIonut.erp.exception.NoClientsException;
@@ -17,10 +18,13 @@ import java.util.stream.Collectors;
 public class ClientService {
     private final ClientRepository clientRepository;
     private final ClientDTOMapper clientDTOMapper;
+    private final ClientRequestMapper clientRequestMapper;
 
-    public ClientService(ClientRepository clientRepository, ClientDTOMapper clientDTOMapper) {
+    public ClientService(ClientRepository clientRepository, ClientDTOMapper clientDTOMapper, ClientRequestMapper clientRequestMapper) {
         this.clientRepository = clientRepository;
         this.clientDTOMapper = clientDTOMapper;
+        this.clientRequestMapper = clientRequestMapper;
+
     }
 
     public List<ClientDTO> getAllClients() {
@@ -34,9 +38,19 @@ public class ClientService {
                 .collect(Collectors.toList());
     }
 
+    private Client findClientEntityById(Integer id){
+        return clientRepository.findById(id)
+                .orElseThrow(() -> new ClientNotFoundException("Client with id " + id + " is not in the database"));
+    }
+
+    public ClientDTO getClientById(Integer id){
+        Client client = findClientEntityById(id);
+        return clientDTOMapper.apply(client);
+    }
+
     public void deleteClientById(Integer id) {
         if (!clientRepository.existsById(id)) {
-            throw new ClientNotFoundException("Client with id " + id + " is not in the data base");
+            throw new ClientNotFoundException("Client with id " + id + " is not in the database");
         }
         clientRepository.deleteById(id);
     }
@@ -48,23 +62,9 @@ public class ClientService {
         if(clientRepository.existsByClientPhoneNumber(clientRequestDTO.clientPhoneNumber())){
             throw new ClientFoundException(("Client with phone number " + clientRequestDTO.clientPhoneNumber() + " is already in the database"));
         }
-        Client client = new Client();
-        client.setClientEmail(clientRequestDTO.clientEmail());
-        client.setClientAddress(clientRequestDTO.clientAddress());
-        client.setClientName(clientRequestDTO.clientName());
-        client.setClientPhoneNumber(clientRequestDTO.clientPhoneNumber());
+        Client client = clientRequestMapper.apply(clientRequestDTO);
         clientRepository.save(client);
 
-        return clientDTOMapper.apply(client);
-    }
-
-    private Client findClientEntityById(Integer id){
-        return clientRepository.findById(id)
-                .orElseThrow(() -> new ClientNotFoundException("Client with id " + id + " is not in the database"));
-    }
-
-    public ClientDTO getClientById(Integer id){
-        Client client = findClientEntityById(id);
         return clientDTOMapper.apply(client);
     }
 

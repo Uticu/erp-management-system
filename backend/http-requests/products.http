@@ -1,5 +1,14 @@
 ###GET ALL PRODUCTS
-GET http://localhost:8080/api/products/get-all-products
+GET http://localhost:8080/api/products
 
-###DELETE PRODUCT BY ID
-DELETE http://localhost:8080/api/products/remove-by-id/1
+###GET PRODUCTS BY ID
+GET http://localhost:8080/api/products/{{id}}
+
+###DELETE PRODUCTS BY ID
+DELETE http://localhost:8080/api/products/{{id}}
+
+###MODIFY PRODUCTS
+PUT http://localhost:8080/api/products/{{id}}
+
+###INSERT PRODUCTS
+POST http://localhost:8080/api/products

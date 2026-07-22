@@ -12,10 +12,10 @@ public class Products {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer productID;
 
-    @Column(name = "productName", length = 255, nullable = false, unique = false)
+    @Column(name = "productName", length = 255, nullable = false, unique = true)
     private String productName;
 
-    @Column(name = "productPrice", nullable = false, precision = 10, scale = 2)
+    @Column(name = "productPrice", nullable = false, precision = 10, scale = 2, unique = false)
     private BigDecimal productPrice;
 
     @Column(name = "productStock", nullable = false)
@@ -33,10 +33,6 @@ public class Products {
 
     public Integer getProductID() {
         return productID;
-    }
-
-    public void setProductID(Integer productID) {
-        this.productID = productID;
     }
 
     public Integer getProductStock() {

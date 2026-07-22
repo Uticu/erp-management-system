@@ -1,0 +1,7 @@
+package com.StrugarMaximIonut.erp.exception;
+
+public class ProductFoundException extends RuntimeException {
+    public ProductFoundException(String message) {
+        super(message);
+    }
+}
