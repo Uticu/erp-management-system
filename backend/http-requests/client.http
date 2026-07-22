@@ -1,2 +1,8 @@
 ###GET ALL CLIENTS
 GET http://localhost:8080/api/client
+
+###DELETE CLIENT BY ID
+DELETE http://localhost:8080/api/client/{id}
+
+###INSERT CLIENT
+PUT http://localhost:8080/api/client

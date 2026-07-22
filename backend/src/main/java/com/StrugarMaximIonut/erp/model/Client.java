@@ -26,19 +26,16 @@ public class Client {
     public Client(){
     }
 
-    public Client(Integer clientID, String clientName, String clientEmail, String clientAddress) {
+    public Client(Integer clientID, String clientName, String clientEmail, String clientAddress, String clientPhoneNumber) {
         this.clientID = clientID;
         this.clientName = clientName;
         this.clientEmail = clientEmail;
         this.clientAddress = clientAddress;
+        this.clientPhoneNumber = clientPhoneNumber;
     }
 
     public Integer getClientID() {
         return clientID;
-    }
-
-    public void setClientID(Integer clientID) {
-        this.clientID = clientID;
     }
 
     public String getClientName() {

@@ -1,11 +1,11 @@
 package com.StrugarMaximIonut.erp.controller;
 
 import com.StrugarMaximIonut.erp.dto.ClientDTO;
-import com.StrugarMaximIonut.erp.model.Client;
+import com.StrugarMaximIonut.erp.dto.ClientRequestDTO;
 import com.StrugarMaximIonut.erp.service.ClientService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,8 +19,34 @@ public class ClientController {
     }
 
     @GetMapping()
-    public List<ClientDTO> getClients(){
-        return clientService.getAllClients();
+    public ResponseEntity<List<ClientDTO>> getClients(){
+        List<ClientDTO> list = clientService.getAllClients();
+        return  ResponseEntity.ok(list);
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ClientDTO> getClientById(@PathVariable Integer id){
+        ClientDTO clientDTO = clientService.getClientById(id);
+        return ResponseEntity.ok(clientDTO);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<ClientDTO> modifyClient(@RequestBody ClientRequestDTO clientRequestDTO, @PathVariable Integer id){
+        ClientDTO clientDTO = clientService.modifyClient(clientRequestDTO, id);
+        return ResponseEntity.ok(clientDTO);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteClientById(@PathVariable Integer id){
+        clientService.deleteClientById(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PostMapping()
+    public ResponseEntity<ClientDTO> insertClient(@RequestBody ClientRequestDTO clientRequestDTO){
+        ClientDTO clientDTO = clientService.insertClient(clientRequestDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).body(clientDTO);
+    }
+
 
 }
