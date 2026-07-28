@@ -1,4 +1,4 @@
-package com.StrugarMaximIonut.erp.dto;
+package com.StrugarMaximIonut.erp.dto.products;
 
 import com.StrugarMaximIonut.erp.model.Products;
 import org.springframework.stereotype.Component;

@@ -1,4 +1,4 @@
-package com.StrugarMaximIonut.erp.dto;
+package com.StrugarMaximIonut.erp.dto.client;
 
 import com.StrugarMaximIonut.erp.model.Client;
 import org.springframework.stereotype.Component;

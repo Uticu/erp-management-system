@@ -2,6 +2,7 @@ package com.StrugarMaximIonut.erp.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -22,6 +23,9 @@ public class Client {
 
     @Column(name = "clientPhoneNumber", length = 20, nullable = false, unique = true)
     private String clientPhoneNumber;
+
+    @OneToMany(mappedBy = "client")
+    private List<Orders> orders;
 
     public Client(){
     }

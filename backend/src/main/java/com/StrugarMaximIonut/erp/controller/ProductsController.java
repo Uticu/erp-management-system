@@ -1,8 +1,8 @@
 package com.StrugarMaximIonut.erp.controller;
 
-import com.StrugarMaximIonut.erp.dto.ProductsDTO;
-import com.StrugarMaximIonut.erp.dto.ProductsRequestDTO;
-import com.StrugarMaximIonut.erp.dto.ProductsRequestMapper;
+import com.StrugarMaximIonut.erp.dto.products.ProductsDTO;
+import com.StrugarMaximIonut.erp.dto.products.ProductsRequestDTO;
+import com.StrugarMaximIonut.erp.dto.products.ProductsRequestMapper;
 import com.StrugarMaximIonut.erp.service.ProductsService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -1,4 +1,4 @@
-package com.StrugarMaximIonut.erp.dto;
+package com.StrugarMaximIonut.erp.dto.products;
 
 import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotBlank;

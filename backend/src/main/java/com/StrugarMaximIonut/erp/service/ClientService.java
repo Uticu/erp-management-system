@@ -1,12 +1,12 @@
 package com.StrugarMaximIonut.erp.service;
 
-import com.StrugarMaximIonut.erp.dto.ClientDTO;
-import com.StrugarMaximIonut.erp.dto.ClientDTOMapper;
-import com.StrugarMaximIonut.erp.dto.ClientRequestDTO;
-import com.StrugarMaximIonut.erp.dto.ClientRequestMapper;
-import com.StrugarMaximIonut.erp.exception.ClientFoundException;
-import com.StrugarMaximIonut.erp.exception.ClientNotFoundException;
-import com.StrugarMaximIonut.erp.exception.NoClientsException;
+import com.StrugarMaximIonut.erp.dto.client.ClientDTO;
+import com.StrugarMaximIonut.erp.dto.client.ClientDTOMapper;
+import com.StrugarMaximIonut.erp.dto.client.ClientRequestDTO;
+import com.StrugarMaximIonut.erp.dto.client.ClientRequestMapper;
+import com.StrugarMaximIonut.erp.exception.client.ClientFoundException;
+import com.StrugarMaximIonut.erp.exception.client.ClientNotFoundException;
+import com.StrugarMaximIonut.erp.exception.client.NoClientsException;
 import com.StrugarMaximIonut.erp.model.Client;
 import com.StrugarMaximIonut.erp.repository.ClientRepository;
 import org.springframework.stereotype.Service;

@@ -1,12 +1,12 @@
 package com.StrugarMaximIonut.erp.service;
 
-import com.StrugarMaximIonut.erp.dto.ProductsDTO;
-import com.StrugarMaximIonut.erp.dto.ProductsDTOMapper;
-import com.StrugarMaximIonut.erp.dto.ProductsRequestDTO;
-import com.StrugarMaximIonut.erp.dto.ProductsRequestMapper;
-import com.StrugarMaximIonut.erp.exception.NoProductsException;
-import com.StrugarMaximIonut.erp.exception.ProductFoundException;
-import com.StrugarMaximIonut.erp.exception.ProductNotFoundException;
+import com.StrugarMaximIonut.erp.dto.products.ProductsDTO;
+import com.StrugarMaximIonut.erp.dto.products.ProductsDTOMapper;
+import com.StrugarMaximIonut.erp.dto.products.ProductsRequestDTO;
+import com.StrugarMaximIonut.erp.dto.products.ProductsRequestMapper;
+import com.StrugarMaximIonut.erp.exception.products.NoProductsException;
+import com.StrugarMaximIonut.erp.exception.products.ProductFoundException;
+import com.StrugarMaximIonut.erp.exception.products.ProductNotFoundException;
 import com.StrugarMaximIonut.erp.model.Products;
 import com.StrugarMaximIonut.erp.repository.ProductsRepository;
 import org.springframework.stereotype.Service;

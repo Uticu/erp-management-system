@@ -1,7 +1,7 @@
 package com.StrugarMaximIonut.erp.controller;
 
-import com.StrugarMaximIonut.erp.dto.ClientDTO;
-import com.StrugarMaximIonut.erp.dto.ClientRequestDTO;
+import com.StrugarMaximIonut.erp.dto.client.ClientDTO;
+import com.StrugarMaximIonut.erp.dto.client.ClientRequestDTO;
 import com.StrugarMaximIonut.erp.service.ClientService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
