@@ -3,6 +3,8 @@ package com.StrugarMaximIonut.erp.exception;
 import com.StrugarMaximIonut.erp.exception.client.ClientFoundException;
 import com.StrugarMaximIonut.erp.exception.client.ClientNotFoundException;
 import com.StrugarMaximIonut.erp.exception.client.NoClientsException;
+import com.StrugarMaximIonut.erp.exception.orders.NoOrdersException;
+import com.StrugarMaximIonut.erp.exception.orders.OrderNotFoundException;
 import com.StrugarMaximIonut.erp.exception.products.NoProductsException;
 import com.StrugarMaximIonut.erp.exception.products.ProductFoundException;
 import com.StrugarMaximIonut.erp.exception.products.ProductNotFoundException;
@@ -17,6 +19,7 @@ import java.time.LocalDateTime;
 @RestControllerAdvice
 public class GlobalExceptionHandler {
 
+    //Handle Client exceptions
     @ExceptionHandler(NoClientsException.class)
     public ResponseEntity<Object> noClientsInDataBase(NoClientsException ex){
         ApiError apiError = new ApiError(404, ex.getMessage(), LocalDateTime.now());
@@ -35,6 +38,7 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(apiError, HttpStatus.CONFLICT);
     }
 
+    //Handle Products exceptions
     @ExceptionHandler(NoProductsException.class)
     public ResponseEntity<Object> noProductsInDataBase(NoProductsException ex){
         ApiError apiError = new ApiError(404, ex.getMessage(), LocalDateTime.now());
@@ -51,5 +55,18 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Object> productFoundInDataBase(ProductFoundException ex){
         ApiError apiError = new ApiError(409, ex.getMessage(), LocalDateTime.now());
         return new ResponseEntity<>(apiError, HttpStatus.CONFLICT);
+    }
+
+    //Handle Orders exceptions
+    @ExceptionHandler(NoOrdersException.class)
+    public ResponseEntity<Object> noOrdersInDataBase(NoOrdersException ex){
+        ApiError apiError = new ApiError(404, ex.getMessage(), LocalDateTime.now());
+        return new ResponseEntity<>(apiError, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(OrderNotFoundException.class)
+    public ResponseEntity<Object> orderNotFoundInDataBase(OrderNotFoundException ex){
+        ApiError apiError = new ApiError(404, ex.getMessage(), LocalDateTime.now());
+        return new ResponseEntity<>(apiError, HttpStatus.NOT_FOUND);
     }
 }

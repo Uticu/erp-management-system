@@ -1,0 +1,5 @@
+### GET ALL ORDERS
+GET http://localhost:8080/api/orders
+
+### GET ORDER BY ID
+GET http://localhost:8080/api/orders/1

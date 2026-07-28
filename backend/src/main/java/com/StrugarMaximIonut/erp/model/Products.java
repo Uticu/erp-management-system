@@ -3,6 +3,8 @@ package com.StrugarMaximIonut.erp.model;
 import jakarta.persistence.*;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -21,6 +23,9 @@ public class Products {
     @Column(name = "productStock", nullable = false)
     private Integer productStock;
 
+    @OneToMany(mappedBy = "products")
+    private List<OrderDetails> orderDetails = new ArrayList<>();
+
     public Products(){
     }
 
@@ -29,6 +34,10 @@ public class Products {
         this.productName = productName;
         this.productPrice = productPrice;
         this.productStock = productStock;
+    }
+
+    public List<OrderDetails> getOrderDetails() {
+        return orderDetails;
     }
 
     public Integer getProductID() {

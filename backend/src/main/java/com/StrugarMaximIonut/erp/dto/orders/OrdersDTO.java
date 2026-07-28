@@ -1,10 +1,12 @@
 package com.StrugarMaximIonut.erp.dto.orders;
 
+import com.StrugarMaximIonut.erp.dto.orderDetails.OrderDetailsDTO;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public record OrdersDTO (
         @NotNull(message = "orderID is mandatory")
@@ -26,8 +28,10 @@ public record OrdersDTO (
 
         @NotBlank(message = "Client phone number is mandatory")
         @Size(max = 20, message = "Client phone number cannot exceed 20 characters")
-        String clientPhoneNumber
+        String clientPhoneNumber,
 
+        @NotNull(message = "Cart is empty")
+        List<OrderDetailsDTO> orderDetailsDTOList
 ) {
 
 

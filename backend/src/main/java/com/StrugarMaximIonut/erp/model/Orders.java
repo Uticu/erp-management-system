@@ -3,6 +3,8 @@ package com.StrugarMaximIonut.erp.model;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Entity
@@ -25,6 +27,9 @@ public class Orders {
     @JoinColumn(name = "clientID")
     private Client client;
 
+    @OneToMany(mappedBy = "orders")
+    private List<OrderDetails> orderDetails = new ArrayList<>();
+
     public Orders(){
 
     }
@@ -35,6 +40,10 @@ public class Orders {
         this.orderStatus = orderStatus;
         this.orderDeliveryAddress = orderDeliveryAddress;
         this.client = client;
+    }
+
+    public List<OrderDetails> getOrderDetails(){
+        return this.orderDetails;
     }
 
     public LocalDateTime getOrderDate() {
