@@ -40,6 +40,7 @@ CREATE TABLE Bill(
     billNumber VARCHAR(5) NOT NULL,
     clientName VARCHAR(255) NOT NULL,
     clientAddress VARCHAR(255) NOT NULL,
+    billTotalAmount DECIMAL(10, 2) NOT NULL,
     CONSTRAINT fk_Bill_Order
         FOREIGN KEY (orderID) REFERENCES Orders(orderID),
     CONSTRAINT UC_orderID UNIQUE(orderID),

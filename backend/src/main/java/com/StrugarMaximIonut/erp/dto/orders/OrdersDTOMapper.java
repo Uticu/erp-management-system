@@ -19,7 +19,7 @@ public class OrdersDTOMapper implements Function<Orders, OrdersDTO> {
     public OrdersDTO apply(Orders orders) {
         return new OrdersDTO(
                 orders.getOrderID(),
-                orders.getClient().getClientID(),
+                orders.getClient().getClientName(),
                 orders.getOrderDate(),
                 orders.getOrderStatus(),
                 orders.getOrderDeliveryAddress(),

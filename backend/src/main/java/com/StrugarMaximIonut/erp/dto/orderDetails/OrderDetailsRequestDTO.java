@@ -1,5 +1,6 @@
 package com.StrugarMaximIonut.erp.dto.orderDetails;
 
+import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 
 public record OrderDetailsRequestDTO(
@@ -7,6 +8,7 @@ public record OrderDetailsRequestDTO(
         Integer productID,
 
         @NotNull(message = "Product quantity is mandatory")
+        @Min(1)
         Integer quantity
 ){
 }
