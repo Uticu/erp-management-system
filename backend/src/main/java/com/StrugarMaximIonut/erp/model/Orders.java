@@ -23,6 +23,9 @@ public class Orders {
     @Column(name = "orderDeliveryAddress", length = 255, nullable = false, unique = false)
     private String orderDeliveryAddress;
 
+    @Column(name = "clientPhoneNumber", length = 20, nullable = false)
+    private String clientPhoneNumber;
+
     @ManyToOne
     @JoinColumn(name = "clientID")
     private Client client;
@@ -34,11 +37,12 @@ public class Orders {
 
     }
 
-    public Orders(Integer orderID, LocalDateTime orderDate, String orderStatus, String orderDeliveryAddress, Client client) {
+    public Orders(Integer orderID, LocalDateTime orderDate, String orderStatus, String orderDeliveryAddress, String clientPhoneNumber, Client client) {
         this.orderID = orderID;
         this.orderDate = orderDate;
         this.orderStatus = orderStatus;
         this.orderDeliveryAddress = orderDeliveryAddress;
+        this.clientPhoneNumber = clientPhoneNumber;
         this.client = client;
     }
 
@@ -80,6 +84,14 @@ public class Orders {
 
     public Integer getOrderID() {
         return orderID;
+    }
+
+    public void setClientPhoneNumber(String clientPhoneNumber){
+        this.clientPhoneNumber = clientPhoneNumber;
+    }
+
+    public String getClientPhoneNumber(){
+        return this.clientPhoneNumber;
     }
 
     @Override

@@ -1,6 +1,6 @@
 package com.StrugarMaximIonut.erp.dto.orderDetails;
 
-import jakarta.persistence.Column;
+import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -16,6 +16,7 @@ public record OrderDetailsDTO (
     Integer quantity,
 
     @NotNull(message = "Product price is mandatory")
+    @Digits(integer = 8, fraction = 2, message = "Price format is invalid")
     BigDecimal sellingPrice
 ){
 

@@ -4,12 +4,29 @@ GET http://localhost:8080/api/client
 ###GET CLIENT BY ID
 GET http://localhost:8080/api/client/{{id}}
 
+###GET CLIENT BY EMAIL
+GET http://localhost:8080/api/client/search?email=test@test.com
+
+###GET CLIENT BY NAME
+GET http://localhost:8080/api/client/search?name=Andrei
+
+###GET CLIENTS STARTING WITH A STRING
+GET http://localhost:8080/api/client/search?nameStartWith=An
+
+###GET CLIENTS CONTAINING A STRING
+GET http://localhost:8080/api/client/search?nameContains=asd
+
+###GET CLIENTS ENDING WITH A STRING
+GET http://localhost:8080/api/client/search?nameEndsWith=ab
+
+###GET CLIENT BY PHONE NUMBER
+GET http://localhost:8080/api/client/search?clientPhoneNumber=0746363796
+
 ###DELETE CLIENT BY ID
 DELETE http://localhost:8080/api/client/{{id}}
 
 ###INSERT CLIENT
-PUT http://localhost:8080/api/client
+POST http://localhost:8080/api/client
 
 ###MODIFY CLIENT
-POST http://localhost:8080/api/client/{{id}}
-
+PUT http://localhost:8080/api/client/{{id}}

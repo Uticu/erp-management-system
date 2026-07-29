@@ -8,7 +8,8 @@ CREATE TABLE Products(
     productID INT AUTO_INCREMENT PRIMARY KEY,
     productName VARCHAR(255) NOT NULL,
     productPrice DECIMAL(10, 2) NOT NULL,
-    productStock INT NOT NULL
+    productStock INT NOT NULL,
+    CONSTRAINT UC_productName UNIQUE(productName)
 );
 
 CREATE TABLE Client(
@@ -24,7 +25,7 @@ CREATE TABLE Client(
 CREATE TABLE Orders(
     orderID INT AUTO_INCREMENT PRIMARY KEY,
     clientID INT NOT NULL,
-    orderDate DATE NOT NULL,
+    orderDate TIMESTAMP NOT NULL,
     orderStatus VARCHAR(255) NOT NULL,
     orderDeliveryAddress VARCHAR(255) NOT NULL,
     clientPhoneNumber VARCHAR(20) NOT NULL,
@@ -35,7 +36,7 @@ CREATE TABLE Orders(
 CREATE TABLE Bill(
     billID INT AUTO_INCREMENT PRIMARY KEY,
     orderID INT NOT NULL,
-    billIssueDate DATE NOT NULL,
+    billIssueDate TIMESTAMP NOT NULL,
     billSeries VARCHAR(3) NOT NULL,
     billNumber VARCHAR(5) NOT NULL,
     clientName VARCHAR(255) NOT NULL,

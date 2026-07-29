@@ -1,5 +1,6 @@
 package com.StrugarMaximIonut.erp.dto.bill;
 
+import jakarta.validation.constraints.Digits;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
@@ -22,6 +23,7 @@ public record BillDTO(
         String billNumber,
 
         @NotNull(message = "Total amount of the bill is mandatory")
+        @Digits(integer = 8, fraction = 2, message = "Total amount format is invalid")
         BigDecimal billTotalAmount,
 
         @NotNull(message = "Client name is mandatory")

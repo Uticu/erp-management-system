@@ -12,8 +12,6 @@ public class OrdersRequestMapper implements BiFunction<OrdersRequestDTO, Client,
     @Override
     public Orders apply(OrdersRequestDTO ordersRequestDTO, Client client){
         Orders orders = new Orders();
-        orders.setOrderDate(ordersRequestDTO.orderDate());
-        orders.setOrderStatus(ordersRequestDTO.orderStatus());
         orders.setOrderDeliveryAddress(ordersRequestDTO.orderDeliveryAddress());
         orders.setClient(client);
         return orders;
