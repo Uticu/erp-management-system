@@ -4,6 +4,36 @@ GET http://localhost:8080/api/products
 ###GET PRODUCTS BY ID
 GET http://localhost:8080/api/products/{{id}}
 
+### GET PRODUCTS BY NAME
+GET http://localhost:8080/api/products/search?name=Laptop
+
+### GET PRODUCTS THAT CONTAINS STRING
+GET http://localhost:8080/api/products/search?nameContains=ada
+
+###GET PRODUCTS THAT STARTS WITH STRING
+GET http://localhost:8080/api/products/search?nameStartsWith=La
+
+###GET PRODUCTS THAT ENDING WITH STRING
+GET http://localhost:8080/api/products/search?nameEndsWith=La
+
+###GET PRODUCTS THAT ARE IN STOCK
+GET http://localhost:8080/api/products/search?inStock=true
+
+###GET PRODUCTS THAT ARE OUT OF STOCK
+GET http://localhost:8080/api/products/search?outOfStock=true
+
+###GET PRODUCTS THAT HAVE THE PRICE LESS THAN
+GET http://localhost:8080/api/products/search?lessThan=10.2
+
+###GET PRODUCTS THAT HAVE THE PRICE EQUALS
+GET http://localhost:8080/api/products/search?equal=10.2
+
+###GET PRODUCTS THAT HAVE THE PRICE GREATER THAN
+GET http://localhost:8080/api/products/search?greaterThan=10.2
+
+###GET PRODUCTS THAT HAVE PRICE BETWEEN
+GET http://localhost:8080/api/products/search?minPrice=1&maxPrice=10.2
+
 ###DELETE PRODUCTS BY ID
 DELETE http://localhost:8080/api/products/{{id}}
 
