@@ -3,3 +3,12 @@ GET http://localhost:8080/api/orders
 
 ### GET ORDER BY ID
 GET http://localhost:8080/api/orders/1
+
+###INSERT ORDER BY ID
+POST http://localhost:8080/api/orders
+
+###DELETE ORDER BY ID
+DELETE http://localhost:8080/api/orders/2
+
+###MODIFY ORDER BY ID
+PUT http://localhost:8080/api/orders/3

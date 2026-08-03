@@ -30,7 +30,7 @@ public class Orders {
     @JoinColumn(name = "clientID")
     private Client client;
 
-    @OneToMany(mappedBy = "orders")
+    @OneToMany(mappedBy = "orders", orphanRemoval = true, cascade = CascadeType.ALL)
     private List<OrderDetails> orderDetails = new ArrayList<>();
 
     public Orders(){
@@ -64,6 +64,10 @@ public class Orders {
 
     public void setOrderStatus(String orderStatus) {
         this.orderStatus = orderStatus;
+    }
+
+    public void setOrderDetails(List<OrderDetails> orderDetails) {
+        this.orderDetails = orderDetails;
     }
 
     public Client getClient() {

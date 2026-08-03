@@ -4,6 +4,7 @@ import com.StrugarMaximIonut.erp.model.Client;
 import com.StrugarMaximIonut.erp.model.Orders;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.function.BiFunction;
 
 
@@ -12,7 +13,9 @@ public class OrdersRequestMapper implements BiFunction<OrdersRequestDTO, Client,
     @Override
     public Orders apply(OrdersRequestDTO ordersRequestDTO, Client client){
         Orders orders = new Orders();
+        orders.setOrderDate(LocalDateTime.now());
         orders.setOrderDeliveryAddress(ordersRequestDTO.orderDeliveryAddress());
+        orders.setOrderStatus("In progress");
         orders.setClient(client);
         return orders;
     }

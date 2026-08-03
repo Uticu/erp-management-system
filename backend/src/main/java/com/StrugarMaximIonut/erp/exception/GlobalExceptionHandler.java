@@ -5,6 +5,7 @@ import com.StrugarMaximIonut.erp.exception.client.ClientNotFoundException;
 import com.StrugarMaximIonut.erp.exception.client.NoClientsException;
 import com.StrugarMaximIonut.erp.exception.orders.NoOrdersException;
 import com.StrugarMaximIonut.erp.exception.orders.OrderNotFoundException;
+import com.StrugarMaximIonut.erp.exception.orders.InsuficientStock;
 import com.StrugarMaximIonut.erp.exception.products.NoProductsException;
 import com.StrugarMaximIonut.erp.exception.products.ProductFoundException;
 import com.StrugarMaximIonut.erp.exception.products.ProductNotFoundException;
@@ -68,5 +69,11 @@ public class GlobalExceptionHandler {
     public ResponseEntity<Object> orderNotFoundInDataBase(OrderNotFoundException ex){
         ApiError apiError = new ApiError(404, ex.getMessage(), LocalDateTime.now());
         return new ResponseEntity<>(apiError, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(InsuficientStock.class)
+    public ResponseEntity<Object> productOutOfStock(InsuficientStock ex){
+        ApiError apiError = new ApiError(409, ex.getMessage(), LocalDateTime.now());
+        return new ResponseEntity<>(apiError, HttpStatus.CONFLICT);
     }
 }
