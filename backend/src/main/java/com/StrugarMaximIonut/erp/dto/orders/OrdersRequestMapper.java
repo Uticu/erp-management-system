@@ -1,5 +1,6 @@
 package com.StrugarMaximIonut.erp.dto.orders;
 
+import com.StrugarMaximIonut.erp.enums.OrderStatus;
 import com.StrugarMaximIonut.erp.model.Client;
 import com.StrugarMaximIonut.erp.model.Orders;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,7 @@ public class OrdersRequestMapper implements BiFunction<OrdersRequestDTO, Client,
         Orders orders = new Orders();
         orders.setOrderDate(LocalDateTime.now());
         orders.setOrderDeliveryAddress(ordersRequestDTO.orderDeliveryAddress());
-        orders.setOrderStatus("In progress");
+        orders.setOrderStatus(OrderStatus.PENDING);
         orders.setClient(client);
         return orders;
     }

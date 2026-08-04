@@ -1,6 +1,7 @@
 package com.StrugarMaximIonut.erp.dto.orders;
 
 import com.StrugarMaximIonut.erp.dto.orderDetails.OrderDetailsDTO;
+import com.StrugarMaximIonut.erp.enums.OrderStatus;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotEmpty;
 import jakarta.validation.constraints.NotNull;
@@ -21,7 +22,7 @@ public record OrdersDTO (
 
         @NotBlank(message = "Status is mandatory")
         @Size(max = 255, message = "Status cannot exceed 255 characters")
-        String orderStatus,
+        OrderStatus orderStatus,
 
         @NotBlank(message = "Delivery address is mandatory")
         @Size(max = 255, message = "Delivery address cannot exceed 255 characters")

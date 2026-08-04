@@ -4,11 +4,32 @@ GET http://localhost:8080/api/orders
 ### GET ORDER BY ID
 GET http://localhost:8080/api/orders/1
 
+###GET ORDERS BY CLIENT ID
+GET http://localhost:8080/api/orders/client/2
+
+###GET ORDERS WITH PRODUCTS BY CLIENT ID
+GET http://localhost:8080/api/orders/client/products/3
+
+###GET ORDERS BETWEEN TWO DATES
+GET http://localhost:8080/api/orders/date?minDate=2020-12-05&maxDate=2020-12-12
+
+###GET ORDERS BY STATUS
+http://localhost:8080/api/orders/status?orderStatus=CANCELLED
+
+###GET ORDERS BY DELIVERY ADDRESS
+http://localhost:8080/api/orders/deliveryAddress?address=Str.Andrei
+
 ###INSERT ORDER BY ID
 POST http://localhost:8080/api/orders
 
 ###DELETE ORDER BY ID
 DELETE http://localhost:8080/api/orders/2
 
+###CANCEL ORDER BY ID
+PUT http://localhost:8080/api/orders/cancel/3
+
 ###MODIFY ORDER BY ID
-PUT http://localhost:8080/api/orders/3
+PUT http://localhost:8080/api/orders/modify/3
+
+###MODIFY ORDER STATUS BY ID
+PUT http://localhost:8080/api/orders/status/3

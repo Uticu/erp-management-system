@@ -1,5 +1,6 @@
 package com.StrugarMaximIonut.erp.model;
 
+import com.StrugarMaximIonut.erp.enums.OrderStatus;
 import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
@@ -18,7 +19,8 @@ public class Orders {
     private LocalDateTime orderDate;
 
     @Column(name = "orderStatus", length = 255, nullable = false, unique = false)
-    private String orderStatus;
+    @Enumerated(EnumType.STRING)
+    private OrderStatus orderStatus;
 
     @Column(name = "orderDeliveryAddress", length = 255, nullable = false, unique = false)
     private String orderDeliveryAddress;
@@ -37,7 +39,8 @@ public class Orders {
 
     }
 
-    public Orders(Integer orderID, LocalDateTime orderDate, String orderStatus, String orderDeliveryAddress, String clientPhoneNumber, Client client) {
+    public Orders(Integer orderID, LocalDateTime orderDate, OrderStatus orderStatus, String orderDeliveryAddress,
+                  String clientPhoneNumber, Client client) {
         this.orderID = orderID;
         this.orderDate = orderDate;
         this.orderStatus = orderStatus;
@@ -58,11 +61,11 @@ public class Orders {
         this.orderDate = orderDate;
     }
 
-    public String getOrderStatus() {
-        return orderStatus;
+    public OrderStatus getOrderStatus() {
+        return this.orderStatus;
     }
 
-    public void setOrderStatus(String orderStatus) {
+    public void setOrderStatus(OrderStatus orderStatus) {
         this.orderStatus = orderStatus;
     }
 

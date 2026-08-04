@@ -4,17 +4,20 @@ import com.StrugarMaximIonut.erp.exception.client.ClientFoundException;
 import com.StrugarMaximIonut.erp.exception.client.ClientNotFoundException;
 import com.StrugarMaximIonut.erp.exception.client.NoClientsException;
 import com.StrugarMaximIonut.erp.exception.orders.NoOrdersException;
+import com.StrugarMaximIonut.erp.exception.orders.OrderCancelledException;
 import com.StrugarMaximIonut.erp.exception.orders.OrderNotFoundException;
 import com.StrugarMaximIonut.erp.exception.orders.InsuficientStock;
 import com.StrugarMaximIonut.erp.exception.products.NoProductsException;
 import com.StrugarMaximIonut.erp.exception.products.ProductFoundException;
 import com.StrugarMaximIonut.erp.exception.products.ProductNotFoundException;
+import org.hibernate.query.Order;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @RestControllerAdvice
@@ -73,6 +76,12 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(InsuficientStock.class)
     public ResponseEntity<Object> productOutOfStock(InsuficientStock ex){
+        ApiError apiError = new ApiError(409, ex.getMessage(), LocalDateTime.now());
+        return new ResponseEntity<>(apiError, HttpStatus.CONFLICT);
+    }
+
+    @ExceptionHandler(OrderCancelledException.class)
+    public ResponseEntity<Object> orderAlreadyCancelled(OrderCancelledException ex){
         ApiError apiError = new ApiError(409, ex.getMessage(), LocalDateTime.now());
         return new ResponseEntity<>(apiError, HttpStatus.CONFLICT);
     }
