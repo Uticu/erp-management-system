@@ -1,7 +1,6 @@
 package com.StrugarMaximIonut.erp.exception;
 
 import com.StrugarMaximIonut.erp.exception.bill.BillNotFoundException;
-import com.StrugarMaximIonut.erp.exception.bill.BillNumberExceededException;
 import com.StrugarMaximIonut.erp.exception.bill.NoBillsFoundException;
 import com.StrugarMaximIonut.erp.exception.client.ClientFoundException;
 import com.StrugarMaximIonut.erp.exception.client.ClientNotFoundException;
@@ -100,11 +99,4 @@ public class GlobalExceptionHandler {
         ApiError apiError = new ApiError(404, ex.getMessage(), LocalDateTime.now());
         return new ResponseEntity<>(apiError, HttpStatus.NOT_FOUND);
     }
-
-    @ExceptionHandler(BillNumberExceededException.class)
-    public ResponseEntity<Object> billNumberExceeded(BillNumberExceededException ex){
-        ApiError apiError = new ApiError(400, ex.getMessage(), LocalDateTime.now());
-        return new ResponseEntity<>(apiError, HttpStatus.BAD_REQUEST);
-    }
-
 }

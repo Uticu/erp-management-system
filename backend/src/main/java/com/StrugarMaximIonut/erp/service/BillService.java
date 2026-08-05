@@ -6,7 +6,6 @@ import com.StrugarMaximIonut.erp.dto.bill.BillRequestDTO;
 import com.StrugarMaximIonut.erp.dto.orders.OrdersDTOMapper;
 import com.StrugarMaximIonut.erp.dto.orders.OrdersRequestMapper;
 import com.StrugarMaximIonut.erp.exception.bill.BillNotFoundException;
-import com.StrugarMaximIonut.erp.exception.bill.BillNumberExceededException;
 import com.StrugarMaximIonut.erp.exception.bill.NoBillsFoundException;
 import com.StrugarMaximIonut.erp.exception.client.ClientNotFoundException;
 import com.StrugarMaximIonut.erp.exception.orders.NoOrdersException;
@@ -118,10 +117,6 @@ public class BillService {
             billNumber = 1;
         } else{
             billNumber = maxBillNumber + 1;
-        }
-
-        if(billNumber > 99999){
-            throw new BillNumberExceededException("Bill with series " + billRequestDTO.billSeries() + " has reached it's number limit");
         }
 
         BigDecimal totalAmount = BigDecimal.ZERO;
