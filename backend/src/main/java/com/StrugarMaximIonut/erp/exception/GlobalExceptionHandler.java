@@ -1,5 +1,8 @@
 package com.StrugarMaximIonut.erp.exception;
 
+import com.StrugarMaximIonut.erp.exception.bill.BillNotFoundException;
+import com.StrugarMaximIonut.erp.exception.bill.BillNumberExceededException;
+import com.StrugarMaximIonut.erp.exception.bill.NoBillsFoundException;
 import com.StrugarMaximIonut.erp.exception.client.ClientFoundException;
 import com.StrugarMaximIonut.erp.exception.client.ClientNotFoundException;
 import com.StrugarMaximIonut.erp.exception.client.NoClientsException;
@@ -10,14 +13,13 @@ import com.StrugarMaximIonut.erp.exception.orders.InsuficientStock;
 import com.StrugarMaximIonut.erp.exception.products.NoProductsException;
 import com.StrugarMaximIonut.erp.exception.products.ProductFoundException;
 import com.StrugarMaximIonut.erp.exception.products.ProductNotFoundException;
-import org.hibernate.query.Order;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @RestControllerAdvice
@@ -85,4 +87,24 @@ public class GlobalExceptionHandler {
         ApiError apiError = new ApiError(409, ex.getMessage(), LocalDateTime.now());
         return new ResponseEntity<>(apiError, HttpStatus.CONFLICT);
     }
+
+    //Handle Bill exceptions
+    @ExceptionHandler(NoBillsFoundException.class)
+    public ResponseEntity<Object> noBillsFound(NoBillsFoundException ex){
+        ApiError apiError = new ApiError(404, ex.getMessage(), LocalDateTime.now());
+        return new ResponseEntity<>(apiError, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(BillNotFoundException.class)
+    public ResponseEntity<Object> billNotFound(BillNotFoundException ex){
+        ApiError apiError = new ApiError(404, ex.getMessage(), LocalDateTime.now());
+        return new ResponseEntity<>(apiError, HttpStatus.NOT_FOUND);
+    }
+
+    @ExceptionHandler(BillNumberExceededException.class)
+    public ResponseEntity<Object> billNumberExceeded(BillNumberExceededException ex){
+        ApiError apiError = new ApiError(400, ex.getMessage(), LocalDateTime.now());
+        return new ResponseEntity<>(apiError, HttpStatus.BAD_REQUEST);
+    }
+
 }

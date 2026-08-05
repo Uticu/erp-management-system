@@ -38,7 +38,7 @@ CREATE TABLE Bill(
     orderID INT NOT NULL,
     billIssueDate TIMESTAMP NOT NULL,
     billSeries VARCHAR(3) NOT NULL,
-    billNumber VARCHAR(5) NOT NULL,
+    billNumber INT NOT NULL,
     clientName VARCHAR(255) NOT NULL,
     clientAddress VARCHAR(255) NOT NULL,
     billTotalAmount DECIMAL(10, 2) NOT NULL,

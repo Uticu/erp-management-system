@@ -19,8 +19,8 @@ public class Bill {
     @Column(name = "billSeries", length = 3, nullable = false, unique = true)
     private String billSeries;
 
-    @Column(name = "billNumber", length = 5, nullable = false, unique = true)
-    private String billNumber;
+    @Column(name = "billNumber",nullable = false, unique = true)
+    private Integer billNumber;
 
     @Column(name = "billTotalAmount", precision = 10, scale = 2, nullable = false)
     private BigDecimal billTotalAmount;
@@ -37,7 +37,7 @@ public class Bill {
 
     public Bill(){}
 
-    public Bill(Integer billID, Orders orders, BigDecimal billTotalAmount, String billNumber, String billSeries, LocalDateTime billIssueDate) {
+    public Bill(Integer billID, Orders orders, BigDecimal billTotalAmount, Integer billNumber, String billSeries, LocalDateTime billIssueDate) {
         this.billID = billID;
         this.orders = orders;
         this.billTotalAmount = billTotalAmount;
@@ -82,11 +82,11 @@ public class Bill {
         this.billSeries = billSeries;
     }
 
-    public String getBillNumber() {
+    public Integer getBillNumber() {
         return billNumber;
     }
 
-    public void setBillNumber(String billNumber) {
+    public void setBillNumber(Integer billNumber) {
         this.billNumber = billNumber;
     }
 

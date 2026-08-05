@@ -1,0 +1,17 @@
+###GET ALL BILLS
+GET http://localhost:8080/api/bills
+
+###GET BILL BY ID
+GET http://localhost:8080/api/bills/3
+
+###GET BILLS BETWEEN TWO DATES
+GET http://localhost:8080/api/bills/date?minDate=2020-01-20&maxDate=2021-12-14
+
+###GET BILL BY SERIES AND NUMBER
+GET http://localhost:8080/api/bills/seriesAndNumber?series=ABC&number=00001
+
+###INSERT BILL
+POST http://localhost:8080/api/bills
+
+###DELETE BILL BY ID
+DELETE http://localhost:8080/api/bills/3
