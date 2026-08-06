@@ -10,9 +10,9 @@ public class ProductsRequestMapper implements Function<ProductsRequestDTO, Produ
     @Override
     public Products apply(ProductsRequestDTO productsRequestDTO){
         Products products = new Products();
-        products.setProductName(products.getProductName());
-        products.setProductPrice(products.getProductPrice());
-        products.setProductStock(products.getProductStock());
+        products.setProductName(productsRequestDTO.productName());
+        products.setProductPrice(productsRequestDTO.productPrice());
+        products.setProductStock(productsRequestDTO.productStock());
 
         return products;
     }

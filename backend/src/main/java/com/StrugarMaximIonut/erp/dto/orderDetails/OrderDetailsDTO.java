@@ -1,9 +1,7 @@
 package com.StrugarMaximIonut.erp.dto.orderDetails;
 
-import jakarta.validation.constraints.Digits;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
+import jakarta.validation.constraints.*;
+
 
 import java.math.BigDecimal;
 
@@ -13,6 +11,7 @@ public record OrderDetailsDTO (
     String productName,
 
     @NotNull(message = "Product quantity is mandatory")
+    @Min( value = 1, message = "Product stock must be at least 1")
     Integer quantity,
 
     @NotNull(message = "Product price is mandatory")

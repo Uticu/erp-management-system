@@ -23,13 +23,14 @@ http://localhost:8080/api/orders/deliveryAddress?address=Str.Andrei
 POST http://localhost:8080/api/orders
 
 ###DELETE ORDER BY ID
-DELETE http://localhost:8080/api/orders/2
+DELETE http://localhost:8080/api/orders/11
 
 ###CANCEL ORDER BY ID
 PUT http://localhost:8080/api/orders/cancel/3
 
 ###MODIFY ORDER BY ID
-PUT http://localhost:8080/api/orders/modify/3
+PUT http://localhost:8080/api/orders/modify/1
+
 
 ###MODIFY ORDER STATUS BY ID
-PUT http://localhost:8080/api/orders/status/3
+PUT http://localhost:8080/api/orders/status/13

@@ -96,7 +96,7 @@ public class BillService {
     public void deleteBillById(Integer id){
         Bill bill = findBillEntityById(id);
 
-        billRepository.deleteByBillID(id);
+        billRepository.deleteById(id);
     }
 
     public BillDTO insertBill(BillRequestDTO billRequestDTO){

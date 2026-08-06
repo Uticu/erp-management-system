@@ -156,7 +156,7 @@ public class OrdersService {
                     .orElseThrow(() -> new ProductNotFoundException("Product not found"));
 
             if (products.getProductStock() < index.quantity()) {
-                throw new InsuficientStock("Product stock is less than the client quantity request");
+                throw new InsuficientStock("Product stock for " + products.getProductName() + " is less than the client quantity request");
             }
             products.setProductStock(products.getProductStock() - index.quantity());
 
@@ -225,7 +225,7 @@ public class OrdersService {
                     .orElseThrow(() -> new ProductNotFoundException("Product not found"));
 
             if (products.getProductStock() < index.quantity()) {
-                throw new InsuficientStock("Product stock is less than the client quantity request");
+                throw new InsuficientStock("Product stock for " + products.getProductName() + " is less than the client quantity request");
             }
             products.setProductStock(products.getProductStock() - index.quantity());
 

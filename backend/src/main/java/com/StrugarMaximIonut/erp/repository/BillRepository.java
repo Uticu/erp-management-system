@@ -15,8 +15,6 @@ public interface BillRepository extends JpaRepository<Bill, Integer> {
 
     Bill findByBillSeriesAndBillNumber(String series, Integer number);
 
-    void deleteByBillID(Integer billID);
-
     @Query("SELECT MAX(b.billNumber)" +
             " FROM Bill b " +
             " WHERE b.billSeries = :series")

@@ -18,6 +18,7 @@ public class OrdersRequestMapper implements BiFunction<OrdersRequestDTO, Client,
         orders.setOrderDeliveryAddress(ordersRequestDTO.orderDeliveryAddress());
         orders.setOrderStatus(OrderStatus.PENDING);
         orders.setClient(client);
+        orders.setClientPhoneNumber(client.getClientPhoneNumber());
         return orders;
     }
 }

@@ -8,7 +8,7 @@ public record OrderDetailsRequestDTO(
         Integer productID,
 
         @NotNull(message = "Product quantity is mandatory")
-        @Min(1)
+        @Min(value = 1, message = "Product quantity must be at least 1")
         Integer quantity
 ){
 }
