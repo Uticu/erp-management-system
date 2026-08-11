@@ -13,7 +13,7 @@ import java.util.List;
 
 public record OrdersDTO (
         @NotNull(message = "Order ID is mandatory")
-        Integer orderId,
+        Integer orderID,
 
         @NotBlank(message = "Name is mandatory")
         String clientName,
