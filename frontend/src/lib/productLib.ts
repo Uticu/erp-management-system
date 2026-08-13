@@ -1,11 +1,11 @@
 import { instance } from "./api";
-import type { client } from "../types/client";
+import type { product } from "../types/product";
 import type { apiError } from "./apiError";
 import axios from "axios";
 
-export const getClients = async (): Promise<client[]> => {
+export const getProducts = async (): Promise<product[]> => {
     try {
-        const response = await instance.get<client[]>("/api/client");
+        const response = await instance.get<product[]>("/api/products");
         return response.data;
     } catch (error) {
         if (axios.isAxiosError<apiError>(error)) {
@@ -19,9 +19,9 @@ export const getClients = async (): Promise<client[]> => {
     }
 }
 
-export const getClientById = async (id: number): Promise<client> => {
+export const getProductById = async (id: number): Promise<product> => {
     try {
-        const response = await instance.get<client>(`/api/client/${id}`);
+        const response = await instance.get<product>(`/api/products/${id}`);
         return response.data;
     } catch (error) {
         if (axios.isAxiosError<apiError>(error)) {
@@ -35,9 +35,9 @@ export const getClientById = async (id: number): Promise<client> => {
     }
 }
 
-export const getClientByEmail = async (email: string): Promise<client> => {
+export const getProductByName = async (productName: string): Promise<product> => {
     try {
-        const response = await instance.get<client>("/api/client/search", { params: { email: email } });
+        const response = await instance.get<product>("/api/products/search", { params: { name: productName } });
         return response.data;
     } catch (error) {
         if (axios.isAxiosError<apiError>(error)) {
@@ -51,9 +51,9 @@ export const getClientByEmail = async (email: string): Promise<client> => {
     }
 }
 
-export const getClientsByName = async (name: string): Promise<client[]> => {
+export const getProductsContainingString = async (productNameContains: string): Promise<product[]> => {
     try {
-        const response = await instance.get<client[]>("/api/client/search", { params: { name: name } });
+        const response = await instance.get<product[]>("/api/products/search", { params: { nameContains: productNameContains } });
         return response.data;
     } catch (error) {
         if (axios.isAxiosError<apiError>(error)) {
@@ -67,9 +67,9 @@ export const getClientsByName = async (name: string): Promise<client[]> => {
     }
 }
 
-export const getClientsStartingWithString = async (startWith: string): Promise<client[]> => {
+export const getProductsStartingWithString = async (nameStarts: string): Promise<product[]> => {
     try {
-        const response = await instance.get<client[]>("/api/client/search", { params: { nameStartWith: startWith } });
+        const response = await instance.get<product[]>("/api/products/search", { params: { nameStartsWith: nameStarts } });
         return response.data;
     } catch (error) {
         if (axios.isAxiosError<apiError>(error)) {
@@ -83,9 +83,9 @@ export const getClientsStartingWithString = async (startWith: string): Promise<c
     }
 }
 
-export const getClientsContainingString = async (nameContains: string): Promise<client[]> => {
+export const getProductsEndingWithString = async (nameEnds: string): Promise<product[]> => {
     try {
-        const response = await instance.get<client[]>("/api/client/search", { params: { nameContain: nameContains } });
+        const response = await instance.get<product[]>("/api/products/search", { params: { nameEndsWith: nameEnds } });
         return response.data;
     } catch (error) {
         if (axios.isAxiosError<apiError>(error)) {
@@ -99,9 +99,9 @@ export const getClientsContainingString = async (nameContains: string): Promise<
     }
 }
 
-export const getClientsEndingWithString = async (endsWith: string): Promise<client[]> => {
+export const getProductsInStock = async (productsInStock: string): Promise<product[]> => {
     try {
-        const response = await instance.get<client[]>("/api/client/search", { params: { nameEndsWith: endsWith } });
+        const response = await instance.get<product[]>("/api/products/search", { params: { inStock: productsInStock } });
         return response.data;
     } catch (error) {
         if (axios.isAxiosError<apiError>(error)) {
@@ -115,9 +115,9 @@ export const getClientsEndingWithString = async (endsWith: string): Promise<clie
     }
 }
 
-export const getClientByPhoneNumber = async (number: string): Promise<client> => {
+export const getProductsOutOfStock = async (productsOutOfStock: string): Promise<product[]> => {
     try {
-        const response = await instance.get<client>("/api/client/search", { params: { phoneNumber: number } });
+        const response = await instance.get<product[]>("/api/products/search", { params: { outOfStock: productsOutOfStock } });
         return response.data;
     } catch (error) {
         if (axios.isAxiosError<apiError>(error)) {
@@ -131,16 +131,9 @@ export const getClientByPhoneNumber = async (number: string): Promise<client> =>
     }
 }
 
-type ClientRequest = {
-    clientName: string;
-    clientEmail: string;
-    clientAddress: string;
-    clientPhoneNumber: string;
-}
-
-export const insertClient = async (data: ClientRequest): Promise<client> => {
+export const getProductsLessThanPrice = async (priceLessThan: number): Promise<product[]> => {
     try {
-        const response = await instance.post<client>("/api/client", data);
+        const response = await instance.get<product[]>("/api/products/search", { params: { lessThan: priceLessThan } });
         return response.data;
     } catch (error) {
         if (axios.isAxiosError<apiError>(error)) {
@@ -154,9 +147,9 @@ export const insertClient = async (data: ClientRequest): Promise<client> => {
     }
 }
 
-export const modifyClient = async (data: ClientRequest, id: number): Promise<client> => {
+export const getProductsEqualsPrice = async (priceEquals: number): Promise<product[]> => {
     try {
-        const response = await instance.put<client>(`/api/client/${id}`, data);
+        const response = await instance.get<product[]>("/api/products/search", { params: { equal: priceEquals } });
         return response.data;
     } catch (error) {
         if (axios.isAxiosError<apiError>(error)) {
@@ -170,10 +163,79 @@ export const modifyClient = async (data: ClientRequest, id: number): Promise<cli
     }
 }
 
-export const deleteClient = async (id: number): Promise<void> => {
+export const getProductsGreaterThanPrice = async (priceGreater: number): Promise<product[]> => {
     try {
-        await instance.delete(`/api/client/${id}`);
+        const response = await instance.get<product[]>("/api/products/search", { params: { greaterThan: priceGreater } });
+        return response.data;
+    } catch (error) {
+        if (axios.isAxiosError<apiError>(error)) {
+            console.error(error.response?.data.message);
+            console.error(error.response?.data.status);
+            console.error(error.response?.data.dateTime);
+            throw new Error(error.response?.data.message || "Server not responding");
+        } else {
+            throw error;
+        }
+    }
+}
+export const getProductsBetweenPrice = async (minimum: number, maximum: number): Promise<product[]> => {
+    try {
+        const response = await instance.get<product[]>("/api/products/search", { params: { minPrice: minimum, maxPrice: maximum } });
+        return response.data;
+    } catch (error) {
+        if (axios.isAxiosError<apiError>(error)) {
+            console.error(error.response?.data.message);
+            console.error(error.response?.data.status);
+            console.error(error.response?.data.dateTime);
+            throw new Error(error.response?.data.message || "Server not responding");
+        } else {
+            throw error;
+        }
+    }
+}
+
+export const deleteProductById = async (id: number): Promise<void> => {
+    try {
+        await instance.delete(`/api/products/${id}`);
         return;
+    } catch (error) {
+        if (axios.isAxiosError<apiError>(error)) {
+            console.error(error.response?.data.message);
+            console.error(error.response?.data.status);
+            console.error(error.response?.data.dateTime);
+            throw new Error(error.response?.data.message || "Server not responding");
+        } else {
+            throw error;
+        }
+    }
+}
+
+type productRequest = {
+    productName: string;
+    productPrice: number;
+    productStock: number;
+}
+
+export const insertProduct = async (data: productRequest): Promise<product> => {
+    try {
+        const response = await instance.post<product>("/api/products", data);
+        return response.data;
+    } catch (error) {
+        if (axios.isAxiosError<apiError>(error)) {
+            console.error(error.response?.data.message);
+            console.error(error.response?.data.status);
+            console.error(error.response?.data.dateTime);
+            throw new Error(error.response?.data.message || "Server not responding");
+        } else {
+            throw error;
+        }
+    }
+}
+
+export const modifyProduct = async (data: productRequest, id: number): Promise<product> => {
+    try {
+        const response = await instance.put<product>(`/api/products/${id}`, data);
+        return response.data;
     } catch (error) {
         if (axios.isAxiosError<apiError>(error)) {
             console.error(error.response?.data.message);
