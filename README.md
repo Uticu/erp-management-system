@@ -64,6 +64,6 @@ The foundation of the frontend is set up focusing on type safety and modular API
    npm run dev
 4. Open your browser and go to http://localhost:5173
 
-#Contact
+Contact
 Strugar Maxim-Ionut - strugar.maxim34@gmail.com
 Project link: https://github.com/Uticu/erp-management-system
