@@ -54,16 +54,16 @@ The foundation of the frontend is set up focusing on type safety and modular API
 
 ### Frontend Setup
 1. Open a new terminal and navigate to the fronted directory:
-   Bash
+   ```Bash
    cd frontend
 2. Install dependencies:
-   Bash
+   ```Bash
    npm install
 3. Start the Vite development server:
-   Bash
+   ```Bash
    npm run dev
 4. Open your browser and go to http://localhost:5173
 
-Contact
-Strugar Maxim-Ionut - strugar.maxim34@gmail.com
-Project link: https://github.com/Uticu/erp-management-system
+##Contact
+*Strugar Maxim-Ionut - strugar.maxim34@gmail.com
+*Project link: https://github.com/Uticu/erp-management-system
