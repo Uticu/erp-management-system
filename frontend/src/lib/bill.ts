@@ -74,7 +74,7 @@ type billRequest = {
 
 export const insertBill = async (data: billRequest): Promise<bill> => {
     try {
-        const response = await instance.post("/api/bills");
+        const response = await instance.post<bill>("/api/bills", data);
         return response.data;
     } catch (error) {
         if (axios.isAxiosError<apiError>(error)) {
